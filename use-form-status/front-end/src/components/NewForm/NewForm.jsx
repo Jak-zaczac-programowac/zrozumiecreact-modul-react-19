@@ -1,33 +1,33 @@
 import { useState } from "react";
 import styles from "./NewForm.module.css";
-import { SubmitButton } from "./SubmitButton";
+import { useFormStatus } from "react-dom";
 
-function createComment(formData) {
-    return fetch("http://localhost:3000/comments", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            name: formData.get("name"),
-            comment: formData.get("comment"),
-        }),
-    });
+function SubmitButton() {
+    const { pending } = useFormStatus();
+
+    return (
+        <button className={styles.submitButton}>
+            {pending ? "Zapisuję..." : "Zapisz"}
+        </button>
+    );
 }
 
 export function NewForm() {
-    const [isError, setIsError] = useState("false");
-
-    const action = (formData) => {
-        setIsError(false);
-        createComment(formData).catch(() => {
-            setIsError(true);
+    function handleSubmit(formData) {
+        return fetch("http://localhost:3000/comments", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: formData.get("name"),
+                comment: formData.get("comment"),
+            }),
         });
-    };
+    }
 
     return (
-        <form action={action}>
-            {isError && <p className={styles.error}>Błąd zapisu</p>}
+        <form action={handleSubmit}>
             <label>
                 <p>Imię:</p>
                 <input type="text" name="name" />
