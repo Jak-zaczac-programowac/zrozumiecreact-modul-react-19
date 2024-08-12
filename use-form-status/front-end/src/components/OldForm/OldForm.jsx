@@ -7,7 +7,8 @@ export function OldForm() {
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
 
-    function onButtonClick() {
+    function handleSubmit(e) {
+        e.preventDefault();
         setIsLoading(true);
         fetch("http://localhost:3000/comments", {
             method: "POST",
@@ -30,7 +31,7 @@ export function OldForm() {
     }
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             {isError && <p className={styles.error}>Błąd zapisu</p>}
             <label>
                 <p>Imię:</p>
@@ -57,13 +58,7 @@ export function OldForm() {
                 />
             </label>
 
-            <button
-                className={styles.submitButton}
-                onClick={(e) => {
-                    e.preventDefault();
-                    onButtonClick();
-                }}
-            >
+            <button className={styles.submitButton}>
                 {isLoading ? "Zapisuję..." : "Zapisz"}
             </button>
         </form>
