@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useOptimistic } from "react";
 import { CommentsList } from "./components/CommentsList/CommentsList";
 import { OldForm } from "./components/OldForm/OldForm";
 import { NewForm } from "./components/NewForm/NewForm";
@@ -7,6 +7,8 @@ const BACK_END_URL = "http://localhost:3000";
 
 function App() {
     const [comments, setComments] = useState([]);
+    const [optimisticComments, setOptimisticComments] = useOptimistic(comments);
+
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -48,11 +50,14 @@ function App() {
 
             <h3>Komentarze:</h3>
             <hr />
-            <CommentsList comments={comments} isLoading={isLoading} />
+            <CommentsList comments={optimisticComments} isLoading={isLoading} />
             <hr />
             <h3>Skomentuj:</h3>
             {/* <OldForm /> */}
-            <NewForm />
+            <NewForm
+                setComments={setComments}
+                setOptimisticComments={setOptimisticComments}
+            />
         </>
     );
 }

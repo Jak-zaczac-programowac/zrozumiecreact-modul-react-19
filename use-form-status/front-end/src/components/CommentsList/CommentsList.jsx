@@ -6,7 +6,8 @@ export function CommentsList({ comments = [], loading = false }) {
                 <div key={c.id}>
                     <p>
                         <i>Autor:</i> <b>{c.name}</b>{" "}
-                        {new Date(c.createdAt).toLocaleDateString()}
+                        {c.createdAt &&
+                            new Date(c.createdAt).toLocaleDateString()}
                     </p>
                     <p>{c.comment}</p>
                 </div>
