@@ -27,7 +27,7 @@ export function NewForm() {
     }
 
     return (
-        <form action={handleSubmit}>
+        <form className={styles.form} action={handleSubmit}>
             <label>
                 <p>Imię:</p>
                 <input type="text" name="name" />
