@@ -2,7 +2,7 @@ import styles from "./NewForm.module.css";
 
 export function NewForm() {
     return (
-        <form>
+        <form className={styles.form}>
             <label>
                 <p>Imię:</p>
                 <input type="text" name="name" />

@@ -2,7 +2,7 @@ import styles from "./OldForm.module.css";
 
 export function OldForm() {
     return (
-        <form>
+        <form className={styles.form}>
             <label>
                 <p>Imię:</p>
                 <input type="text" name="name" />

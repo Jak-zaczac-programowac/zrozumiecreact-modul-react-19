@@ -1,3 +1,4 @@
+import "./index.css";
 import { useEffect, useState } from "react";
 import { CommentsList } from "./components/CommentsList/CommentsList";
 import { OldForm } from "./components/OldForm/OldForm";
@@ -22,7 +23,7 @@ function App() {
     }, []);
 
     return (
-        <>
+        <div className="container">
             <h1>Ciekawy artykuł o React 19</h1>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -53,7 +54,7 @@ function App() {
             <h3>Skomentuj:</h3>
             <OldForm />
             {/* <NewForm /> */}
-        </>
+        </div>
     );
 }
 
