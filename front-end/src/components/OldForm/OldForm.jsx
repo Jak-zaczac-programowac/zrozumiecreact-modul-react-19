@@ -31,7 +31,7 @@ export function OldForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.form}>
             {isError && <p className={styles.error}>Błąd zapisu</p>}
             <label>
                 <p>Imię:</p>

@@ -43,7 +43,7 @@ export function NewForm() {
     const [state, formAction] = useActionState(handleSubmit, {});
 
     return (
-        <form action={formAction}>
+        <form action={formAction} className={styles.form}>
             {state.formError && <p className={styles.error}>Błąd zapisu</p>}
             <label>
                 <p>Imię:</p>
