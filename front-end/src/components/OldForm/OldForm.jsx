@@ -30,7 +30,7 @@ export function OldForm() {
     }
 
     return (
-        <form>
+        <form className={styles.form}>
             {isError && <p className={styles.error}>Błąd zapisu</p>}
             <label>
                 <p>Imię:</p>
